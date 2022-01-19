@@ -1,0 +1,13 @@
+{
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "TestApp\\": "src"
+        }
+    },
+    "require": {
+        "thingengineer/mysqli-database-class": "^2.9"
+    }
+}
