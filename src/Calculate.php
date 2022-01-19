@@ -6,21 +6,21 @@ use mysqli;
 
 class Calculate
 {
-    private $measurementUnit; //(metres, feet, or yards)
-    private $depthMeasurementUnit; //(centimetres or inches)
-    private $dimensions; //(width, length, and depth)
-    private $result; //
-
-    public function setMeasurementUnit($unit)
-    {
-        $this->measurementUnit = $unit;
-        return $this->measurementUnit;
-    }
+    private $depthMeasurementUnit;
+    private $measurementUnit;
+    private $dimensions;
+    private $result;
 
     public function setDepthMeasurementUnit($unit)
     {
         $this->depthMeasurementUnit = $unit;
         return $this->depthMeasurementUnit;
+    }
+
+    public function setMeasurementUnit($unit)
+    {
+        $this->measurementUnit = $unit;
+        return $this->measurementUnit;
     }
 
     public function setDimensions($width, $length, $depth=1.4)
@@ -49,7 +49,8 @@ class Calculate
     {
         $conn = new mysqli(Config::DBHOST, Config::DBUSER, Config::DBPWD, Config::DBNAME);
 
-        if ($conn->connect_error) {
+        if ($conn->connect_error)
+        {
             die("Connection failed: " . $conn->connect_error);
         }
 
@@ -62,13 +63,15 @@ class Calculate
             $this->result.
             "')";
 
-        if ($conn->query($sql) === true) {
+        if ($conn->query($sql) === true)
+        {
             $id = $last_id = $conn->insert_id;
             $conn->close();
             return $id;
-        } else {
+        }
+        else
+        {
             $conn->close();
-            //echo "Error: " . $sql . "<br>" . $conn->error;
             return false;
         }
     }
