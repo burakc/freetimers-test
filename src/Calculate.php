@@ -36,10 +36,7 @@ class Calculate
 
     public function calculateBags()
     {
-        $x = $this->dimensions['width'] * $this->dimensions['length'] * 0.025;
-        $y = $this->dimensions['depth'] * $x;
-
-        $result = ceil($y);
+        $result = ceil(($this->dimensions['width'] * $this->dimensions['length'] * 0.025) * $this->dimensions['depth']);
         $this->result = $result;
 
         return $result;
